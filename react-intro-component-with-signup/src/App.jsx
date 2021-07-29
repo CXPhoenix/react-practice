@@ -8,6 +8,9 @@ function App() {
 
   function submitHandler() {
     setSubmitState(hasSubmit=true)
+    Object.keys(inputFormNames).forEach(item => {
+      console.log(document.querySelector('#'+item.split(' ').join('')).value)
+    })
   }
 
   const inputFormNames = {
@@ -29,7 +32,7 @@ function App() {
           </div>
           <div className="grid grid-cols-1 gap-y-6 bg-[#fff] bg-opacity-100 rounded-lg py-10 px-4 shadow-sp">
             {Object.keys(inputFormNames).map((item, index) => (
-              <FormInput key={index} inputName={item} inputType={inputFormNames[item]} isSubmit={hasSubmit} isEmail={item === "Email"} />
+              <FormInput key={index} id={item.split(" ").join('')} inputName={item} inputType={inputFormNames[item]} isSubmit={hasSubmit} isEmail={item === "Email"} />
             ))}
             <div className="text-center">
               <button className="w-11/12 uppercase bg-green-400 text-white rounded-lg p-2 pl-4 cursor-pointer shadow-btn text-[16px]" onClick={submitHandler}>claim your free trial</button>
